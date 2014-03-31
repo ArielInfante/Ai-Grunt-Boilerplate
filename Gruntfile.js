@@ -106,6 +106,29 @@ module.exports = function(grunt) {
             }
         },
 
+        copy: {
+            main: {
+                files: [{
+                    expand: true,
+                    src: ['build/**'],
+                    dest: 'finalbuild/'
+                }]
+            }
+        },
+
+        compress: {
+            main: {
+                options: {
+                    archive: 'finalbuild.zip'
+                },
+                files: [{
+                    flatten: false,
+                    src: ['finalbuild/**'],
+                    dest: 'finalbuild/'
+                }]
+            }
+        },
+
         watch: {
             options: {
                 livereload: false,
@@ -149,31 +172,37 @@ module.exports = function(grunt) {
             }
         },
 
-        copy: {
-            main: {
-                files: [{
-                    expand: true,
-                    src: ['build/**'],
-                    dest: 'finalbuild/'
-                }]
+        shell: {
+            multiple: {
+                command: [
+                    // Install dependencies, directories and files
+                    /*
+                    npm install grunt-contrib-jshint --save-dev
+                    npm install grunt-contrib-uglify --save-dev
+                    npm install grunt-contrib-watch --save-dev
+                    npm install grunt-contrib-copy --save-dev
+                    npm install grunt-contrib-concat --save-dev
+                    npm install grunt-contrib-cssmin --save-dev
+                    npm install grunt-contrib-connect --save-dev
+                    npm install grunt-contrib-imagemin --save-dev
+                    npm install grunt-contrib-htmlmin --save-dev
+                    npm install grunt-contrib-haml --save-dev
+                    npm install grunt-contrib-sass --save-dev
+                    npm install grunt-contrib-compress --save-dev
+                    npm install grunt-svgmin --save-dev
+                    npm install grunt-autoprefixer --save-dev
+                    npm install grunt-csscomb --save-dev
+                    npm install grunt-mkdir --save-dev
+                    npm install grunt-git --save-dev
+                     */
+                ]
             }
-        },
-
-        compress: {
-            main: {
-                options: {
-                    archive: 'finalbuild.zip'
-                },
-                files: [{
-                    flatten: false,
-                    src: ['finalbuild/**'],
-                    dest: 'finalbuild/'
-                }]
-            }
-        },
+        }
     });
 
     require('load-grunt-tasks')(grunt);
+
+    grunt.registerTask('install', ['shell']);
 
     grunt.registerTask('dir', ['mkdir']);
 
