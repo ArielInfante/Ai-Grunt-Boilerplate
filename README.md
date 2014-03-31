@@ -1,0 +1,1 @@
+This is a Boilerplate for the Grunt.js. It makes it easier to start a project. It includes the basic plugins.
