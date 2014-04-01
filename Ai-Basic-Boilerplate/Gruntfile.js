@@ -4,23 +4,6 @@ module.exports = function(grunt) {
 
         pkg: grunt.file.readJSON('package.json'),
 
-        mkdir: {
-            all: {
-                options: {
-                    create: [
-                        'css',
-                        'js',
-                        'images',
-                        'build',
-                        'build/css/prefixed',
-                        'build/css/resorted',
-                        'build/js',
-                        'build/images'
-                    ]
-                }
-            }
-        },
-
         haml: {
             dist: {
                 files: {
@@ -189,22 +172,9 @@ module.exports = function(grunt) {
                 }
             }
         },
-
-        shell: {
-            multiple: {
-                command: [
-                    // Install dependencies, directories and files
-                    'mkdir -p css,images,js,build/{css/{resorted,prefixed},images,js}'
-                ]
-            }
-        },
     });
 
     require('load-grunt-tasks')(grunt);
-
-    grunt.registerTask('install', ['shell']);
-
-    grunt.registerTask('dir', ['mkdir']);
 
     grunt.registerTask('default', ['haml', 'htmlmin', 'csscomb', 'autoprefixer', 'cssmin', 'jshint', 'concat', 'uglify', 'imagemin', 'svgmin']);
 
