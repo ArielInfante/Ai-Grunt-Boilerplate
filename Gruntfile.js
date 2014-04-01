@@ -106,6 +106,24 @@ module.exports = function(grunt) {
             }
         },
 
+        svgmin: {
+            options: {
+                plugins: [
+                    { removeViewBox: false },
+                    { removeUselessStrokeAndFill: false }
+                ]
+            },
+            dist: {
+                files: [{
+                    expand: true,
+                    cwd: 'images/',
+                    src: ['**/*.svg'],
+                    dest: 'build/images/',
+                    ext: 'min.svg'
+                }]
+            }
+        },
+
         copy: {
             main: {
                 files: [{
@@ -177,6 +195,7 @@ module.exports = function(grunt) {
                 command: [
                     // Install dependencies, directories and files
                     /*
+                    npm install --save-dev load-grunt-tasks
                     npm install grunt-contrib-jshint --save-dev
                     npm install grunt-contrib-uglify --save-dev
                     npm install grunt-contrib-watch --save-dev
@@ -197,7 +216,7 @@ module.exports = function(grunt) {
                      */
                 ]
             }
-        }
+        },
     });
 
     require('load-grunt-tasks')(grunt);
@@ -206,9 +225,9 @@ module.exports = function(grunt) {
 
     grunt.registerTask('dir', ['mkdir']);
 
-    grunt.registerTask('default', ['haml', 'htmlmin', 'csscomb', 'autoprefixer', 'cssmin', 'jshint', 'concat', 'uglify', 'imagemin']);
+    grunt.registerTask('default', ['haml', 'htmlmin', 'csscomb', 'autoprefixer', 'cssmin', 'jshint', 'concat', 'uglify', 'imagemin', 'svgmin']);
 
     grunt.registerTask('dev', ['connect', 'watch']);
 
-    grunt.registerTask('dist', ['haml', 'htmlmin', 'csscomb', 'autoprefixer', 'cssmin', 'concat', 'uglify', 'imagemin', 'copy', 'compress']);
+    grunt.registerTask('final', ['haml', 'htmlmin', 'csscomb', 'autoprefixer', 'cssmin', 'concat', 'uglify', 'imagemin', 'copy', 'compress']);
 }
