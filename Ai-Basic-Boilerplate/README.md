@@ -1,0 +1,1 @@
+This is the basic Grunt boilerplate. It only has some of the basic plugins that are widely used. Any other plugins would have to be inserted by the user. Feel free to customize it and let me know how you like your Gruntfile to operate.
