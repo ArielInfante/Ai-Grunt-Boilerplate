@@ -1,9 +1,8 @@
 module.exports = {
-    dist: {
-        src: [
-            'js/libs/*.js',
-            'js/*.js'
-        ],
-        dest: 'build/js/script.js'
+    basic_and_extras: {
+        files: {
+            'build/js/script.js': ['js/lib/jquery.js','js/libs/*.js','js/*.js'],
+            'build/css/main.min.css': ['css/*.css']
+        }
     }
 }
