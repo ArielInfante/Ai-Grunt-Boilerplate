@@ -1,3 +1,3 @@
 module.exports = function(grunt) {
-    grunt.registerTask('default', ['haml', 'htmlmin', 'csscomb', 'autoprefixer', 'cssmin', 'jshint', 'concat', 'uglify', 'imagemin', 'svgmin']);
+    grunt.registerTask('default', ['haml', 'jade', 'htmlmin', 'sass', 'csscomb', 'autoprefixer', 'cssmin', 'jshint', 'concat', 'uglify', 'imagemin', 'svgmin']);
 }
